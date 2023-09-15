@@ -67,7 +67,7 @@ const countUsers = () => {
 };
 
 (() => {
-  fillUsers(10000);
+  fillUsers(500);
   countUsers();
 
   let data = JSON.stringify(users);
