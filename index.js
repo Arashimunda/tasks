@@ -11,6 +11,8 @@ const cities = [
 ];
 const levels = ["TRIAL", "BASIC", "PRIME", "PRIME_PLUS", "BLACK"];
 
+const fs = require("fs");
+
 const getRandomInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -67,4 +69,7 @@ const countUsers = () => {
 (() => {
   fillUsers(10000);
   countUsers();
+
+  let data = JSON.stringify(users);
+  fs.writeFileSync("users.json", data);
 })();
