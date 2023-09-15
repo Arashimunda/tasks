@@ -70,6 +70,6 @@ const countUsers = () => {
   fillUsers(500);
   countUsers();
 
-  let data = JSON.stringify(users);
-  fs.writeFileSync("users.json", data);
+  const usersJson = JSON.stringify(users);
+  fs.writeFileSync("users.json", usersJson);
 })();

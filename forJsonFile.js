@@ -2,13 +2,17 @@
 
 const fs = require("fs");
 
-let usersFile = fs.readFileSync("users.json");
-let users = JSON.parse(usersFile);
+const usersFile = fs.readFileSync("users.json");
+const users = JSON.parse(usersFile);
 // console.log(users);
 
-const findUsersByName = (arr, firstName) => {
-
-  let someUsers = arr.filter((item) => item.firstName.toLowerCase() === firstName.toLowerCase());
+const findUsers = (arr, key, value) => {
+  const someUsers = arr.filter((item) => {
+    if (typeof value !== String) {
+      return item[key] === value;
+    }
+    return item[key].toLowerCase().includes(value.toLowerCase());
+  });
   return someUsers;
 };
 
@@ -17,10 +21,9 @@ const findUsersByGender = (arr, gender) => {
     throw new Error("Пол не указан");
   }
 
-  let someUsers = arr.filter((item) => item.gender === gender);
+  const someUsers = arr.filter((item) => item.gender === gender);
   return someUsers;
 };
 
-console.log(findUsersByName(users, "ИрИНА"));
+console.log(findUsers(users, "age", 18));
 // console.log(findUsersByGender(users, "FEMALE"));
-
